@@ -1,0 +1,88 @@
+doctype html
+html
+  head
+    title Contact Info
+    style.
+      header {
+        background-color: #7BAFD4;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      header a {
+        color: white;
+      }
+      header a:hover {
+        text-decoration: underline;
+      }
+      main {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      section {
+        width: 100%;
+        max-width: 600px; 
+        margin-bottom: 20px;
+      }
+      span, em {
+        display: block;
+        margin-bottom: 5px;
+      }
+      em {
+        font-style: italic;
+        color: #555;
+      }
+      a {
+        background-color: #7BAFD4; 
+        color: white;
+        padding: 8px 12px;
+        border-radius: 5px;
+        display: inline-block; 
+        margin: 5px;
+      }
+      a:hover {
+        background-color: #5692C6;
+      }
+
+  body
+    header
+      a(href='/login') Sign in
+    main
+      h1 Contact Info
+      h2= contact.FirstName + ' ' + contact.LastName
+      hr
+
+      section
+        p
+          a(href='/') Back to list
+        p Phone number:
+          span #{contact.PhoneNumber}
+        if contact.Contact_By_Phone
+          em May be contacted by phone or text
+        else
+          em May NOT be contacted by phone
+      hr
+
+      section
+        p Email address:
+          span #{contact.EmailAddress}
+        if contact.Contact_By_Email
+          em May be contacted by email
+        else
+          em May NOT be contacted by email
+      hr
+
+      section
+        p Address:
+        p
+          span= contact.Address
+        if contact.Contact_By_Mail
+          em May be contacted by mail
+        else
+          em May NOT be contacted by mail
+      hr
+
+      a(href=`/${contact.ID}/edit`) Edit contact
+      a(href=`/${contact.ID}/delete`) Delete contact

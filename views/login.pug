@@ -1,0 +1,111 @@
+doctype html
+html
+  head
+    title Sign In
+    style.
+      body 
+      header {
+        background-color: #7BAFD4;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+      }
+      header h1 {
+        color: white;
+        margin: 0;
+      }
+      main {
+        padding: 60px 20px 20px; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      form {
+        background-color: white;
+        padding: 20px;
+        margin-top: 20px; 
+      }
+
+      div {
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type='text'],
+      input[type='password'] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+
+      .actions {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      button[type='submit'] {
+        background-color: #5692C6;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+
+      button[type='submit']:hover,
+      a.button:hover {
+        background-color: #7BAFD4; 
+      }
+
+      a.button {
+        background-color: #5692C6; 
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block; 
+      }
+
+      p {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      a {
+        color: #5692C6; 
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+  body
+    header
+      h1 Sign in
+
+    main
+      if errorMessage
+        p.error-message= errorMessage
+
+      form(action='/login' method='POST')
+        div
+          label(for='username') Username:
+          input#username(type='text' name='username' required)
+        div
+          label(for='password') Password:
+          input#password(type='password' name='password' required)
+        div.actions
+          button(type='submit') Sign in
+          a.button(href='/') Nevermind
+
+      p
+        | Don't have an account yet? 
+        a(href='/signup') Sign up here!

@@ -1,0 +1,110 @@
+doctype html
+html
+  head
+    title Contact List
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+    script(src="/testing.js") // Added to include the client-side JavaScript file
+    link(rel="stylesheet", href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css", integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=", crossorigin="")
+    script(src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="")
+    link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC", crossorigin="anonymous")
+    style.
+      body 
+        a[href="/login"], a[href="/create"],a[href="/logout"] {
+          background-color: #7BAFD4; 
+          color: white;
+          padding: 10px 15px;
+          border-radius: 5px;
+          text-decoration: none;
+        }
+        a[href="/login"]:hover, a[href="/create"],a[href="/logout"] :hover {
+          background-color: #5692C6; 
+        }
+        a[href="/create"] {
+          margin-top: 20px; 
+          margin-bottom: 20px;
+          display: block; 
+        }
+        header {
+          background-color: #7BAFD4; 
+          padding: 10px 0;
+          color: white;
+        }
+        nav {
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
+          margin-right: 20px;
+        }
+        main {
+          background-color: #FFFFFF; 
+          border-radius: 5px;
+        }
+        table {
+          background-color: #FFFFFF;
+        }
+        thead {
+          background-color: #7BAFD4;
+          color: white;
+        }
+        a {
+          color: #7BAFD4;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+      #map {
+        height: 400px; /* Adjust height as needed */
+      }
+  body
+    header
+      nav
+        if user
+          a(href='/logout') Log out
+        else
+          a(href='/login') Sign in
+    main
+      h1 Contact List
+      a(href='/create') Create a new contact
+      table
+        thead
+          tr
+            th Name
+            th Phone
+            th Greeting
+            th Email
+            th Address
+            th Contact Preferences
+        tbody
+          each contact in contacts
+            tr
+              td
+                a(href=`/${contact.ID}`)= contact.firstName + ' ' + contact.lastName
+
+              td= contact.phoneNumber
+              td= contact.Greeting
+              td= contact.emailAddress
+              td= contact.address
+              td
+                label
+                  input(type="checkbox", checked=contact.Contact_By_Phone ? true : undefined, disabled)
+                  | Phone
+                label
+                  input(type="checkbox", checked=contact.Contact_By_Email ? true : undefined, disabled)
+                  | Email
+                label
+                  input(type="checkbox", checked=contact.Contact_By_Mail ? true : undefined, disabled)
+                  | Mail
+    #map
+    script(src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js", integrity="sha384-2MgN/1IxoVKSHUmdA5fnOs5gCSfBBB6jHBEQqVW5AgX0Up7BRypR1pWlHsEce2Gh", crossorigin="anonymous")
+    script.
+      var map = L.map('map').setView([41,-74,], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+    script.
+      loadContacts() // Moved the loadPlaces function call here
+    script(src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="")
+    script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous")

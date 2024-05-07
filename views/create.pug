@@ -1,0 +1,103 @@
+doctype html
+html
+  head
+    title Create Contact
+    style.
+      header {
+        background-color: #7BAFD4; 
+        color: white;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      header a, .actions a {
+        color: white;
+        margin-right: 10px;
+      }
+
+      header a:hover {
+        text-decoration: underline;
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        margin-top: 40px; 
+      }
+
+      form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        width: 100%;
+        max-width: 600px; 
+      }
+      fieldset {
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input[type='checkbox'] {
+        margin-top: 5px;
+      }
+      .actions button[type='submit'], .actions a {
+        background-color: #5692C6; 
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      .actions button[type='submit']:hover, .actions a:hover {
+        background-color: #7BAFD4; 
+      }
+  body
+    header
+      a(href='/login') Sign in
+      h1 Create Contact
+
+    main
+      form(action='/create' method='POST')
+        fieldset
+          legend Basic Info
+          label(for='firstName') First Name:
+          input#firstName(type='text' name='firstName' required)
+          label(for='lastName') Last Name:
+          input#lastName(type='text' name='lastName' required)
+          label(for='phoneNumber') Phone:
+          input#phoneNumber(type='tel' name='phoneNumber')
+          label(for='emailAddress') Email:
+          input#emailAddress(type='email' name='emailAddress')
+          label(for='greeting') Greeting(Mr,Mrs,etc):
+          input#greeting(type='text' name='greeting')
+
+        fieldset
+          legend Address
+          label(for='street') Street:
+          input#street(type='text' name='street')
+          label(for='city') City:
+          input#city(type='text' name='city')
+          label(for='state') State:
+          input#state(type='text' name='state')
+          label(for='zip') Zip:
+          input#zip(type='text' name='zip')
+          label(for='country') Country:
+          input#country(type='text' name='country')
+
+        fieldset
+          legend Contact Preferences
+          label(for='contactByEmail') Contact By Email:
+          input#contactByEmail(type='checkbox' name='contactByEmail' value='1')
+          label(for='contactByPhone') Contact By Phone:
+          input#contactByPhone(type='checkbox' name='contactByPhone' value='1')
+          label(for='contactByMail') Contact By Mail:
+          input#contactByMail(type='checkbox' name='contactByMail' value='1')
+
+        button(type='submit') Submit

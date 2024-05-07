@@ -1,0 +1,99 @@
+doctype html
+html
+  head
+    title Sign Up
+    style.
+      body 
+      header {
+        background-color: #7BAFD4;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+      form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type='text'],
+      input[type='password'] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+      button[type='submit'],
+      a.button {
+        background-color: #5692C6;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button[type='submit']:hover,
+      a.button:hover {
+        background-color: #7BAFD4;
+      }
+
+      footer {
+        padding: 10px;
+        text-align: center;
+        background-color: #7BAFD4;
+        color: white;
+      }
+
+      footer p a {
+        color: white;
+        text-decoration: none;
+      }
+
+      footer p a:hover {
+        text-decoration: underline;
+      }
+
+  body
+    header
+      h1 Sign up
+
+    main
+      if errorMessage
+        div.message
+          p= errorMessage
+          
+      p Please select a username, and a password.
+      form(action='/signup' method='post')
+        div
+          label(for='firstName') First Name
+          input#firstName(type='text' name='firstName' required)
+        div
+          label(for='lastName') Last Name
+          input#lastName(type='text' name='lastName' required)
+        div
+          label(for='username') Username
+          input#username(type='text' name='username' required)
+        div
+          label(for='password') Password
+          input#password(type='password' name='password' required)
+        div
+          label(for='confirmPassword') Confirm Password
+          input#confirmPassword(type='password' name='confirmPassword' required)
+        div.actions
+          button(type='submit') Sign up
+          a(href='/').button Nevermind
+
+    footer
+      p Already have an account? 
+        a(href='/login') Sign in here!

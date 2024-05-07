@@ -1,0 +1,94 @@
+doctype html
+html
+  head
+    title Edit Contact
+    style.
+      header {
+        background-color: #7BAFD4;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      header a {
+        color: white;
+        text-decoration: none;
+        margin-right: 20px;
+      }
+      main {
+        padding: 20px;
+      }
+      form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      fieldset {
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input[type='checkbox'] {
+        margin-top: 5px;
+      }
+      button[type='submit'] {
+        background-color: #5692C6; 
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block; 
+        width: 100%;
+      }
+      button[type='submit']:hover {
+        background-color: #7BAFD4; 
+      }
+
+  body
+    header
+      a(href='/') Back to list
+      a(href='/logout') Log out
+      h1 Edit Contact: #{contact.FirstName} #{contact.LastName}
+    
+    main
+      form(action=`/${contact.ID}/edit` method='POST')
+        fieldset
+          legend Basic Info
+          label(for='firstName') First Name:
+          input#firstName(type='text' name='firstName' value=contact.FirstName required)
+          label(for='lastName') Last Name:
+          input#lastName(type='text' name='lastName' value=contact.LastName required)
+          label(for='phoneNumber') Phone:
+          input#phoneNumber(type='tel' name='phoneNumber' value=contact.PhoneNumber)
+          label(for='emailAddress') Email:
+          input#emailAddress(type='email' name='emailAddress' value=contact.EmailAddress)
+        
+        fieldset
+          legend Address
+          label(for='street') Street:
+          input#street(type='text' name='street' value=contact.Street)
+          label(for='city') City:
+          input#city(type='text' name='city' value=contact.City)
+          label(for='state') State:
+          input#state(type='text' name='state' value=contact.State)
+          label(for='zip') Zip:
+          input#zip(type='text' name='zip' value=contact.Zip)
+          label(for='country') Country:
+          input#country(type='text' name='country' value=contact.Country)
+        
+        fieldset
+          legend Contact Preferences
+          label(for='contactByEmail') Contact By Email:
+          input#contactByEmail(type='checkbox' name='contactByEmail' checked=contact.Contact_By_Email ? true : undefined)
+          label(for='contactByPhone') Contact By Phone:
+          input#contactByPhone(type='checkbox' name='contactByPhone' checked=contact.Contact_By_Phone ? true : undefined)
+          label(for='contactByMail') Contact By Mail:
+          input#contactByMail(type='checkbox' name='contactByMail' checked=contact.Contact_By_Mail ? true : undefined)
+        
+        button(type='submit') Save Changes
